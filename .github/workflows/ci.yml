@@ -30,8 +30,11 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      - name: Generate BDD tests
+        run: npx bddgen
+
       - name: Run BDD tests
-        run: npm test
+        run: ENV=dev npx playwright test
 
       - name: Upload test results
         if: always()
